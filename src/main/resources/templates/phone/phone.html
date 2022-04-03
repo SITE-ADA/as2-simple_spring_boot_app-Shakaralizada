@@ -1,0 +1,33 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Phone</title>
+    <style>
+        body {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: blanchedalmond;
+            font-family: "DejaVu Sans Mono", "Arial";
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<h3 th:text="${phone.id}">Id</h3>
+<h3 th:text="${phone.name}">Name</h3>
+<h3 th:text="${phone.manufacturer}">Manufacturer</h3>
+<br>
+<br>
+<a th:href="@{/phone/update/{id}(id=${phone.id})}">Update Phone</a>
+<br>
+<a th:href="@{/phone/}">All Phones</a>
+<br>
+<a th:href="@{/phone/create}">Create New Phone</a>
+<br>
+<a th:href="@{/home/}">Go To Home</a></body>
+<br>
+</html>
