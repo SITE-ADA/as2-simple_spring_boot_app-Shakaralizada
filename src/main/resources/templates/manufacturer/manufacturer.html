@@ -1,0 +1,47 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manufacturer</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+            background: blanchedalmond;
+            font-family: "DejaVu Sans Mono", "Arial";
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<h3 th:text="${manufacturer.id}">Id</h3>
+<h3 th:text="${manufacturer.name}">Name</h3>
+<h4>Phones:</h4>
+<table>
+    <tr th:if="${#lists.isEmpty(manufacturer.phones)}">
+        <td>No phones</td>
+    </tr>
+    <tr th:each="p: ${manufacturer.phones}">
+        <td th:text="${p.id}">Id</td>
+        <td th:text="${p.name}">Name</td>
+        <td><a th:href="@{/phone/{id}(id=${p.id})}">View phone</a></td>
+        <td><a th:href="@{/phone/delete/{id}(id=${p.id})}">Delete phone</a></td>
+        <td><a th:href="@{/phone/delete_manufacturer_phone/{id}(id=${p.id})}">Delete phone from manufacturer</a></td>
+        <td><a th:href="@{/manufacturer/delete_phone_manufacturer/{m_id}/{p_id}(m_id=${manufacturer.id}, p_id=${p.id})}">Delete manufacturer from phone</a></td>
+    </tr>
+</table>
+<br>
+<br>
+<a th:href="@{/manufacturer/update/{id}(id=${manufacturer.id})}">Update Maufacturer</a>
+<br>
+<a th:href="@{/manufacturer/}">All Manufacturers</a>
+<br>
+<a th:href="@{/manufacturer/create}">Create New Manufacturer</a>
+<br>
+<a th:href="@{/home/}">Go To Home</a>
+<br>
+</body>
+</html>

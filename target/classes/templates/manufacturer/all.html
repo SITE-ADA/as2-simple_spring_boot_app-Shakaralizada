@@ -1,0 +1,38 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manufacturers</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+            background: blanchedalmond;
+            font-family: "DejaVu Sans Mono", "Arial";
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr th:if="${#lists.isEmpty(manufacturers)}">
+        <td>No manufacturers</td>
+    </tr>
+    <tr th:each="m : ${manufacturers}">
+        <td th:text="${m.id}">Id</td>
+        <td th:text="${m.name}">Name</td>
+        <td><a th:href="@{/manufacturer/{id}(id=${m.id})}">View manufacturer</a></td>
+        <td><a th:href="@{/manufacturer/update/{id}(id=${m.id})}">Update manufacturer</a></td>
+        <td><a th:href="@{/manufacturer/delete/{id}(id=${m.id})}">Delete manufacturer</a></td>
+    </tr>
+</table>
+<br>
+<a th:href="@{/manufacturer/create}">Create New Manufacturer</a>
+<br>
+<a th:href="@{/home/}">Go To Home</a>
+<br>
+</body>
+</html>
